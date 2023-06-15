@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useRef } from 'react';
 import {useTaskManager} from "@/store/useTaskManager";
+import {map} from "zod";
 
 interface Task {
   id: number,
@@ -25,25 +26,25 @@ const TaskManager = () => {
       title,
       completed: false,
     };
-    // addTask(newTask);
+    addTask(newTask);
   };
 
   const handleUpdateTask = (taskId: number, updatedTask: Task) => {
-    // updateTask(taskId, updatedTask);
+    updateTask(taskId, updatedTask);
   };
 
   const handleDeleteTask = (taskId: number) => {
-    // deleteTask(taskId);
+    deleteTask(taskId);
   };
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    // setSearchTask(e.target.value);
+    setSearchTask(e.target.value);
   };
 
   // See! I already give you everything!
-  // const filteredTasks = tasks.filter((task) =>
-  //   task.title.toLowerCase().includes(searchTask.toLowerCase())
-  // );
+  const filteredTasks = tasks.filter((task) =>
+    task.title.toLowerCase().includes(searchTasks.toLowerCase())
+   );
 
   return (
     <div>
@@ -56,7 +57,6 @@ const TaskManager = () => {
       <input type="text" onChange={handleSearch} placeholder="Search Task" />
 
       <ul>
-        {/* 
         {filteredTasks.map((task) => (
           <li key={task.id}>
             <input
@@ -69,7 +69,6 @@ const TaskManager = () => {
             <button onClick={() => handleDeleteTask(task.id)}>Delete</button>
           </li>
         ))}
-        */}
       </ul>
     </div>
   );
