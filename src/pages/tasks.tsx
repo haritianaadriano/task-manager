@@ -1,4 +1,5 @@
 import React, { ChangeEvent, useRef } from 'react';
+import {useTaskManager} from "@/store/useTaskManager";
 
 interface Task {
   id: number,
@@ -7,15 +8,15 @@ interface Task {
 }
 
 const TaskManager = () => {
-  // const createTaskRef = ...:
-  // const {
-  //   tasks,
-  //   searchTask,
-  //   addTask,
-  //   updateTask,
-  //   deleteTask,
-  //   setSearchTask,
-  // } = useTaskManager();
+    // const createTaskRef = ...:
+  const {
+     tasks,
+     searchTasks,
+     addTask,
+     updateTask,
+     deleteTask,
+     setSearchTask,
+   } = useTaskManager();
 
   const handleAddTask = () => {
     const title = ""; // Replace with the value in the createTaskRef 
