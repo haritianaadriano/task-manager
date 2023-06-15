@@ -1,6 +1,7 @@
-import React, { ChangeEvent, useRef } from 'react';
+import React, {ChangeEvent} from 'react';
 import {useTaskManager} from "@/store/useTaskManager";
-import {map} from "zod";
+import {useLocalStorage} from "@/hooks/useLocalStorage";
+import {Type} from "@/types/localStorageType";
 
 interface Task {
   id: number,
@@ -27,9 +28,11 @@ const TaskManager = () => {
       completed: false,
     };
     addTask(newTask);
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+    useLocalStorage(newTask, Type.PUT, newTask.id.toString());
   };
 
-  const handleUpdateTask = (taskId: number, updatedTask: Task) => {
+  const handleUpdateTask = (taskId: number, updatedTask: { title: string }) => {
     updateTask(taskId, updatedTask);
   };
 
